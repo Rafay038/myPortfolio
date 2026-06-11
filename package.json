@@ -1,0 +1,25 @@
+{
+  "name": "myportfolio",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "jest": {
+    "testEnvironment": "jsdom",
+    "collectCoverageFrom": [
+      "*.js",
+      "!jest.config.js",
+      "!coverage/**"
+    ]
+  },
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1"
+  }
+}

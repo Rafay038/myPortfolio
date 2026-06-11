@@ -1,22 +1,14 @@
-const themeToggle = document.getElementById("themeToggle");
-const html = document.documentElement;
+/*
+ * Entry point – wires the theme module to the real DOM / localStorage.
+ *
+ * In the browser <script src="theme.js"> is loaded first, making the
+ * helpers available on `window`.  In Node (tests) the file is required
+ * via CommonJS instead.
+ */
 
-const savedTheme = localStorage.getItem("theme");
-
-if (savedTheme) {
-  html.setAttribute("data-theme", savedTheme);
-  updateButtonText(savedTheme);
-}
-
-themeToggle.addEventListener("click", () => {
-  const currentTheme = html.getAttribute("data-theme");
-  const newTheme = currentTheme === "dark" ? "light" : "dark";
-
-  html.setAttribute("data-theme", newTheme);
-  localStorage.setItem("theme", newTheme);
-  updateButtonText(newTheme);
-});
-
-function updateButtonText(theme) {
-  themeToggle.textContent = theme === "dark" ? "Light Mode" : "Dark Mode";
-}
+/* global initTheme */
+(function () {
+  var btn = document.getElementById("themeToggle");
+  var html = document.documentElement;
+  initTheme(html, btn, localStorage);
+})();
